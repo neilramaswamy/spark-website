@@ -4,9 +4,14 @@ type: "page"
 title: Spark Structured Streaming
 description: Spark Structured Streaming makes it easy to build streaming applications and pipelines with the same and familiar Spark APIs.
 subproject: Streaming
+is_guide: true
 ---
 
 # Structured Streaming Programming Guide
+
+hello?
+
+[Watermarks]({{site.baseurl}}/streaming/watermarks/intro.html)
 
 * This will become a table of contents (this text will be scraped).
 {:toc}

@@ -153,41 +153,48 @@
 
 <div class="container">
   <div class="row mt-4">
-    <div class="col-12 col-md-9">
+    <div class="col-12 {% if page.is_guide %} col-md-12 {% else %} col-md-9 {% endif %}">
       {{content}}
     </div>
+    {% if page.is_guide %}
+    <div>foobar</div>
+    {% endif %}
+
+    {% unless page.is_guide %}
     <div class="col-12 col-md-3">
-      <div class="news" style="margin-bottom: 20px;">
-        <h5>Latest News</h5>
-        <ul class="list-unstyled">
-          {% for post in site.categories.news limit:4 %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a>
-            <span class="small">({{post.date| date:"%b %d, %Y"}})</span></li>
-          {% endfor %}
-        </ul>
-        <p class="small" style="text-align: right;"><a href="{{site.baseurl}}/news/index.html">Archive</a></p>
-      </div>
-      <div style="text-align:center; margin-bottom: 20px;">
-        <a href="https://www.apache.org/events/current-event.html">
-          <img src="https://www.apache.org/events/current-event-234x60.png" style="max-width: 100%;"/>
-        </a>
-      </div>
-      <div class="hidden-xs hidden-sm">
-        <a href="{{site.baseurl}}/downloads.html" class="btn btn-cta btn-lg d-grid" style="margin-bottom: 30px;">
-          Download Spark
-        </a>
-        <p style="font-size: 16px; font-weight: 500; color: #555;">
-          Built-in Libraries:
-        </p>
-        <ul class="list-none">
-          <li><a href="{{site.baseurl}}/sql/">SQL and DataFrames</a></li>
-          <li><a href="{{site.baseurl}}/streaming/">Spark Streaming</a></li>
-          <li><a href="{{site.baseurl}}/mllib/">MLlib (machine learning)</a></li>
-          <li><a href="{{site.baseurl}}/graphx/">GraphX (graph)</a></li>
-        </ul>
-        <a href="{{site.baseurl}}/third-party-projects.html">Third-Party Projects</a>
-      </div>
+        <div class="news" style="margin-bottom: 20px;">
+          <h5>Latest News</h5>
+          <ul class="list-unstyled">
+            {% for post in site.categories.news limit:4 %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a>
+              <span class="small">({{post.date| date:"%b %d, %Y"}})</span></li>
+            {% endfor %}
+          </ul>
+          <p class="small" style="text-align: right;"><a href="{{site.baseurl}}/news/index.html">Archive</a></p>
+        </div>
+
+        <div style="text-align:center; margin-bottom: 20px;">
+          <a href="https://www.apache.org/events/current-event.html">
+            <img src="https://www.apache.org/events/current-event-234x60.png" style="max-width: 100%;"/>
+          </a>
+        </div>
+        <div class="hidden-xs hidden-sm">
+          <a href="{{site.baseurl}}/downloads.html" class="btn btn-cta btn-lg d-grid" style="margin-bottom: 30px;">
+            Download Spark
+          </a>
+          <p style="font-size: 16px; font-weight: 500; color: #555;">
+            Built-in Libraries:
+          </p>
+          <ul class="list-none">
+            <li><a href="{{site.baseurl}}/sql/">SQL and DataFrames</a></li>
+            <li><a href="{{site.baseurl}}/streaming/">Spark Streaming</a></li>
+            <li><a href="{{site.baseurl}}/mllib/">MLlib (machine learning)</a></li>
+            <li><a href="{{site.baseurl}}/graphx/">GraphX (graph)</a></li>
+          </ul>
+          <a href="{{site.baseurl}}/third-party-projects.html">Third-Party Projects</a>
+        </div>
     </div>
+    {% endunless %}
   </div>
 
   {% if page.extra %}
