@@ -1,0 +1,41 @@
+<!--
+
+This component takes the following argument:
+
+    - nav, which is the name of the data file to use to generate the left nav.
+      It is unqualified, meaning that if the caller wants to use the data from
+      "_data/foo.yaml", they should pass only "foo".
+
+-->
+
+{% assign navurl = page.url | remove: 'index.html' %}
+{% assign guidemap = site.data[include.nav] %}
+
+<div style="width: 250px; flex-shrink: 0;">
+    <h3><a href="sql-programming-guide.html">{{ guidemap.name }}</a></h3>
+
+    <div class="left-menu-wrapper">
+        <div class="left-menu">
+            <ul>
+            {% for item in guidemap.contents %}
+                <li>
+                    <a href="{{ item.url }}">
+                        {% if navurl contains item.url %}
+                            <b>{{ item.text }}</b>
+                        {% else %}
+                            {{ item.text }}
+                        {% endif %}
+                    </a>
+                </li>
+                {% assign tag = item.url | remove: ".html" %}
+                {% if item.subitems and navurl contains tag %}
+                    {% include nav-left.html nav=item.subitems %}
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- <input id="nav-trigger" class="nav-trigger" checked type="checkbox">
+    <label for="nav-trigger"></label> -->
+</div>

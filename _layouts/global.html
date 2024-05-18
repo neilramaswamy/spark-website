@@ -96,7 +96,8 @@
           Guides
         </a>
         <ul class="dropdown-menu" aria-labelledby="guides">
-          <li><a class="dropdown-item" href="{{site.baseurl}}/examples.html">Getting Started</a></li>
+          <li><a class="dropdown-item" href="{{site.baseurl}}/examples.html">First Guide</a></li>
+          <li><a class="dropdown-item" href="{{site.baseurl}}/sql/sql-programming-guide.html">SQL, DataFrames, and Datasets</a></li>
           <li><a class="dropdown-item" href="{{site.baseurl}}/streaming/structured-streaming-programming-guide.html">Structured Streaming</a></li>
         </ul>
       </li>
@@ -152,13 +153,18 @@
 </nav>
 
 <div class="container">
-  <div class="row mt-4">
-    <div class="col-12 {% if page.is_guide %} col-md-12 {% else %} col-md-9 {% endif %}">
+  <div class="d-flex mt-4">
+    {% include nav-left.html nav=page.guidemap %}
+
+    <div>
+      {% if page.displayTitle %}
+        <h1 class="title">{{ page.displayTitle }}</h1>
+      {% else %}
+        <h1 class="title">{{ page.title }}</h1>
+      {% endif %}
+
       {{content}}
     </div>
-    {% if page.is_guide %}
-    <div>foobar</div>
-    {% endif %}
 
     {% unless page.is_guide %}
     <div class="col-12 col-md-3">
