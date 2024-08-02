@@ -40,13 +40,6 @@
 */
 
 function codeTabs() {
-  var counter = 0;
-  var langImages = {
-    scala: "img/scala-sm.png",
-    python: "img/python-sm.png",
-    java: "img/java-sm.png",
-  };
-
   $("div.codetabs").each(function () {
     /*
     Currently, our markup has the following structure:
@@ -84,7 +77,7 @@ function codeTabs() {
     Now, we need to populate the nav bar with just the languages that
     we have below.
     */
-    var tabBar = $('<ul class="nav nav-tabs"></ul>');
+    const tabBar = $('<ul class="nav nav-tabs"></ul>');
     $(this).before(tabBar);
 
     // Add each code sample to the tab bar:
@@ -108,8 +101,6 @@ function codeTabs() {
         </li>
       `);
     });
-
-    counter++;
   });
 }
 
