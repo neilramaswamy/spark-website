@@ -3,7 +3,6 @@ body {
     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    overflow-wrap: anywhere;
     overflow-x: hidden;
 }
 
@@ -977,3 +976,12 @@ blockquote {
     border-left: 0.25em solid rgba(0, 0, 0, .1)
 }
 
+/*
+ * Table styling.
+ *
+ * Most of these styles come from the spark repo.
+ */
+ table th, table td {
+    border: 1px solid #cccccc;
+    padding: 6px 13px;
+}
